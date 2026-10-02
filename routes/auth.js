@@ -2,7 +2,7 @@
 const express = require('express')
 const router= express.Router()
 //Internal imports
-const authController=require('../controller/auth')  
+const authController=require('../controller/Auth')  
 
 router.get('/auth/login',authController.getLogin)
 router.post('/auth/login',authController.postLogin)
