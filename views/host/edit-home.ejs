@@ -1,0 +1,61 @@
+<%- include('../partials/head', { title: editing ? 'Edit listing | Stayfinder' : 'Add a home | Stayfinder' }) %>
+</head>
+<body class="min-h-screen bg-rose-50 font-sans text-slate-800">
+  <%- include('../partials/header') %>
+
+  <main class="relative flex min-h-[calc(100vh-4.5rem)] items-center overflow-hidden px-4 py-10 sm:px-6 lg:py-16">
+    <div class="absolute -left-24 top-10 h-72 w-72 rounded-full bg-rose-200/60 blur-3xl"></div>
+    <div class="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-orange-200/60 blur-3xl"></div>
+
+    <div class="relative mx-auto grid w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-rose-950/10 ring-1 ring-rose-100 lg:grid-cols-5">
+      <aside class="relative hidden overflow-hidden bg-gradient-to-br from-rose-500 via-rose-500 to-orange-400 p-10 text-white lg:col-span-2 lg:flex lg:flex-col">
+        <div class="absolute -right-20 -top-16 h-56 w-56 rounded-full border-[28px] border-white/15"></div>
+        <div class="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-white/10"></div>
+        <a href="/" class="relative text-2xl font-bold tracking-tight">stay<span class="text-rose-100">finder</span></a>
+        <div class="relative my-auto">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-rose-100"><%= editing ? 'Keep it fresh' : 'Become a host' %></p>
+          <h1 class="text-4xl font-bold leading-tight"><%= editing ? 'Make your listing shine.' : 'Share your space with the world.' %></h1>
+          <p class="mt-5 text-base leading-7 text-rose-50"><%= editing ? 'Update the key details guests use to discover your home.' : 'Add your home details and welcome travellers looking for their next memorable stay.' %></p>
+        </div>
+        <div class="relative flex items-center gap-3 text-sm text-rose-100"><span class="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 font-bold"><%= editing ? '✓' : '1' %></span><%= editing ? 'Small updates can make a big difference.' : 'Your listing can be ready in just a few steps.' %></div>
+      </aside>
+
+      <section class="p-6 sm:p-10 lg:col-span-3">
+        <a href="/host-list" class="mb-6 inline-flex items-center gap-2 text-sm font-bold text-rose-600 transition hover:text-rose-700"><span aria-hidden="true">&#8592;</span> Back to listings</a>
+        <div class="mb-8">
+          <span class="inline-flex items-center rounded-full bg-rose-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-rose-600"><%= editing ? 'Edit mode' : 'New listing' %></span>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight text-slate-900"><%= editing ? 'Edit your home' : 'Tell us about your home' %></h2>
+          <p class="mt-2 text-sm text-slate-500"><%= editing ? 'Save your changes when you are finished.' : 'These details will appear on your listing for guests.' %></p>
+        </div>
+
+        <form action="<%= editing ? '/edit-home' : '/user/added' %>" method="POST" class="space-y-5">
+          <input type="hidden" name="id" value="<%= editing ? home._id : '' %>">
+
+          <div>
+            <label for="username" class="mb-2 block text-sm font-semibold text-slate-700">Home name</label>
+            <input id="username" type="text" placeholder="e.g. Seaside Retreat" name="username" value="<%= editing ? home.username : '' %>" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition duration-200 placeholder:text-slate-400 hover:border-rose-200 focus:border-rose-500 focus:bg-white focus:ring-4 focus:ring-rose-100">
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="price" class="mb-2 block text-sm font-semibold text-slate-700">Price per night (₹)</label>
+              <input id="price" type="number" placeholder="2500" name="price" value="<%= editing ? home.price : '' %>" min="0" step="1" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition duration-200 placeholder:text-slate-400 hover:border-rose-200 focus:border-rose-500 focus:bg-white focus:ring-4 focus:ring-rose-100">
+            </div>
+            <div>
+              <label for="rating" class="mb-2 block text-sm font-semibold text-slate-700">Rating</label>
+              <input id="rating" type="number" placeholder="4.8" name="rating" value="<%= editing ? home.rating : '' %>" min="0" max="5" step="0.1" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition duration-200 placeholder:text-slate-400 hover:border-rose-200 focus:border-rose-500 focus:bg-white focus:ring-4 focus:ring-rose-100">
+            </div>
+          </div>
+
+          <div>
+            <label for="location" class="mb-2 block text-sm font-semibold text-slate-700">Location</label>
+            <input id="location" type="text" placeholder="e.g. Goa, India" name="location" value="<%= editing ? home.location : '' %>" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition duration-200 placeholder:text-slate-400 hover:border-rose-200 focus:border-rose-500 focus:bg-white focus:ring-4 focus:ring-rose-100">
+          </div>
+
+          <button type="submit" class="w-full rounded-xl bg-gradient-to-r from-rose-500 to-orange-400 px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-rose-300/50 transition duration-200 hover:-translate-y-0.5 hover:from-rose-600 hover:to-orange-500 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-rose-200"><%= editing ? 'Save changes' : 'Publish my listing' %></button>
+        </form>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

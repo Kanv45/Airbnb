@@ -1,0 +1,28 @@
+<%- include('partials/head', { title: 'Page not found' }) %>
+</head>
+<body class="min-h-screen bg-rose-50 font-sans text-slate-800">
+  <%- include('partials/header') %>
+
+  <main class="relative flex min-h-[calc(100vh-4.5rem)] items-center justify-center overflow-hidden px-4 py-12 sm:px-6">
+    <div class="absolute -left-24 top-10 h-72 w-72 rounded-full bg-rose-200/60 blur-3xl"></div>
+    <div class="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-orange-200/60 blur-3xl"></div>
+
+    <section class="relative w-full max-w-2xl overflow-hidden rounded-[2rem] bg-white px-6 py-12 text-center shadow-2xl shadow-rose-950/10 ring-1 ring-rose-100 sm:px-12 sm:py-16">
+      <div class="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-rose-100"></div>
+      <div class="absolute -bottom-20 -left-16 h-40 w-40 rounded-full bg-orange-100"></div>
+
+      <div class="relative">
+        <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-rose-500 to-orange-400 text-4xl text-white shadow-lg shadow-rose-200">!</div>
+        <p class="mt-8 text-sm font-bold uppercase tracking-[0.3em] text-rose-500">Error 404</p>
+        <h1 class="mt-3 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">This place is unavailable.</h1>
+        <p class="mx-auto mt-5 max-w-md text-base leading-7 text-slate-500">The page you are looking for may have moved, been removed, or never existed.</p>
+
+        <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="/" class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-rose-500 to-orange-400 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-rose-300/50 transition hover:-translate-y-0.5 hover:from-rose-600 hover:to-orange-500 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-rose-200">Back to home</a>
+          <a href="/home-list" class="inline-flex items-center justify-center rounded-xl border border-rose-200 bg-rose-50 px-5 py-3 text-sm font-bold text-rose-600 transition hover:border-rose-300 hover:bg-rose-100 focus:outline-none focus:ring-4 focus:ring-rose-100">Explore homes</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
